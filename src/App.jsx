@@ -73,6 +73,7 @@ function Shell() {
       </header>
 
       <div className={"mobile-menu" + (menuOpen ? " open" : "")} aria-hidden={!menuOpen}>
+        <button className="mobile-menu-close" type="button" onClick={closeMenu} aria-label="Close navigation">Close ×</button>
         <nav aria-label="Mobile navigation">
           <a href="#showroom" onClick={closeMenu}>The collection <span>↗</span></a>
           <a href="#lookbook" onClick={closeMenu}>Lookbook <span>↗</span></a>
