@@ -22,12 +22,12 @@ export default function Showroom() {
   const single = whatsappUrl([{ name: sel.name, size: sel.sizes.length ? size : "", qty: 1, price: sel.price }], sel.price);
   return (<main id="showroom" className="showroom">
     <aside className="left">
-      <h2>AURAE 3D SHOWROOM</h2>
+      <h2>AURAÈ 3D SHOWROOM</h2>
       <div className="chips">{cats.map((c) => <button key={c} className={c === cat ? "on" : ""} onClick={() => setCat(c)}>{c.toUpperCase()}</button>)}</div>
       <div className="list">{products.filter((p) => cat === "All" || p.category === cat).map((p) => (
         <button key={p.id} className={"item" + (outfit[p.slot] === p.id ? " on" : "")} onClick={() => pick(p)}>
           <img src={p.thumbnail} alt="" /><span><small>{p.category.toUpperCase()}</small>{p.name}</span></button>))}</div>
-      <small className="dim">PRESETS</small>
+      <small className="dim preset-label">STYLE PRESETS</small>
       <div className="chips">{presets.map((p) => <button key={p.name} onClick={() => setOutfit(p.outfit)}>{p.name}</button>)}</div>
     </aside>
     <section className="stage">
@@ -36,19 +36,19 @@ export default function Showroom() {
         <button onClick={() => view.current.front()}>FRONT</button><button onClick={() => view.current.back()}>BACK</button>
         <button onClick={() => view.current.zoom(0.8)}>ZOOM +</button><button onClick={() => view.current.zoom(1.25)}>ZOOM −</button>
         <button onClick={() => view.current.reset()}>RESET</button></div>
-      <div className="mark">DREAMS · FAITH · YOU</div>
+      <div className="mark">AURAÈ · DREAMS · FAITH · YOU</div>
     </section>
     <aside className="right">
       <h2>{sel.name}</h2><p className="tag">“{sel.tagline}”</p><p className="price">{naira(sel.price)}</p>
       <p className="dim">{sel.description}</p>
       {sel.sizes.length > 0 && <><small className="dim">SIZES</small><div className="chips">{sel.sizes.map((s) => <button key={s} className={s === size ? "on" : ""} onClick={() => setSize(s)}>{s}</button>)}</div></>}
       <p className="dim">{sel.available ? "IN STOCK" : "SOLD OUT"}</p>
-      <button className="btn" onClick={() => add(sel, sel.sizes.length ? size : "")}>ADD TO CART</button>
-      <a className="btn alt" href={single} target="_blank" rel="noreferrer">ORDER ON WHATSAPP</a>
+      <button className="btn" onClick={() => add(sel, sel.sizes.length ? size : "")}>Add to bag <span aria-hidden="true">+</span></button>
+      <a className="btn alt" href={single} target="_blank" rel="noreferrer">Order on WhatsApp <span aria-hidden="true">↗</span></a>
       <div className="look"><small className="dim">YOUR LOOK</small>
         {worn.map(([slot, p]) => <div className="row" key={slot}><span>{slot.toUpperCase()} — {p.name}</span><span>{naira(p.price)}</span></div>)}
         <div className="row"><b>TOTAL</b><b>{naira(total)}</b></div>
-        <a className={"btn alt" + (worn.length ? "" : " off")} href={worn.length ? lookUrl : undefined} target="_blank" rel="noreferrer">ORDER THIS LOOK</a></div>
+        <a className={"btn alt" + (worn.length ? "" : " off")} href={worn.length ? lookUrl : undefined} target="_blank" rel="noreferrer">Order this look <span aria-hidden="true">↗</span></a></div>
     </aside>
   </main>);
 }
