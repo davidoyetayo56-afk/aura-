@@ -31,7 +31,7 @@ function AppShell() {
   const contact = wa("Hello AURAÈ, I'd like to enquire about the collection.");
   const enquiry = (p) => wa("Hello AURAÈ, I'm interested in " + p.name + ". Please confirm current price, available sizes and delivery details.");
   const title = ({home:"Wear your why.",shop:"The collection",collections:"Collections",lookbook:"Beyond the surface",about:"Dreams. Faith. You."})[route.page] || (selected?.name || "AURAÈ");
-  return <div className="site">
+  return <div className={route.page === "home" ? "site home-site" : "site"}>
     {route.page !== "home" && <>\n    <div className="topline">DREAMS · FAITH · YOU <span>INDEPENDENT STREETWEAR</span></div>
     <header className="header">
       <a className="wordmark" href="#/">AURAÈ<span>+</span></a>
