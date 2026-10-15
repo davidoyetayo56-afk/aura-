@@ -244,3 +244,98 @@ img{display:block;max-width:100%}
  .plus{width:25px;height:25px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* AURAÈ approved editorial homepage: sharp live type, glass controls and a compact category rail. */
+.home-site{background:#030303;color:#f3f0e9}
+.home-site>.topline{position:absolute;z-index:50;top:0;left:0;width:100%;height:39px;display:flex;align-items:center;justify-content:center;background:#030303;color:#f4f0ea;font-size:9px;letter-spacing:.18em}
+.home-site>.topline span{line-height:1}
+.home-site>.header{position:absolute;z-index:45;top:39px;left:0;width:100%;height:68px;padding:0 4.7vw;border:0;background:linear-gradient(180deg,#050505b8,#0505053c 65%,transparent);backdrop-filter:none;-webkit-backdrop-filter:none}
+.home-site .wordmark{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:.21em}
+.home-site .wordmark span{display:none}
+.home-site .navlinks{gap:clamp(18px,4.5vw,64px);margin-left:auto;margin-right:auto;padding-left:4vw}
+.home-site .navlinks a{color:#f0ece5;font-size:9px;letter-spacing:.15em}
+.home-site .navlinks a:hover,.home-site .navlinks a.active{color:#fff}
+.home-site .bag{padding:10px 12px;border:0;border-radius:0;background:transparent;box-shadow:none;font-size:9px;letter-spacing:.13em}
+.home-site .bag span{margin:0 0 0 4px}
+.home-site .menu-toggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:34px;padding:0;border:0;background:transparent;box-shadow:none;font-size:24px;font-weight:300;line-height:1}
+.home-site main{display:block;width:100%;max-width:none;margin:0;padding:0}
+.home-site .home-hero.home-reference-layout{height:clamp(930px,73.5vw,1040px);min-height:0;max-height:none;position:relative;isolation:isolate;overflow:hidden;display:block;padding:0;background:#050608}
+.home-site .home-hero-art{position:absolute;z-index:-3;top:0;left:0;width:100%;height:82%;object-fit:cover;object-position:50% 39%;transform:none;filter:saturate(.88) contrast(1.06)}
+.home-site .home-hero-shade{position:absolute;z-index:-2;inset:0;width:100%;height:100%;background:linear-gradient(180deg,#0304055c 0%,#03040500 24%,#0304051a 50%,#03040574 68%,#030303f2 84%,#030303 100%),linear-gradient(90deg,#0008 0%,#0000 20%,#0000 80%,#0008 100%)}
+.home-reference-kicker{position:absolute;top:42.3%;left:0;width:100%;text-align:center;color:#f0ebe4;font-size:11px;letter-spacing:.24em;font-weight:400;text-shadow:0 1px 20px #0009}
+.home-site .hero-copy{position:absolute;top:46.5%;left:50%;width:min(820px,92%);margin:0;padding:0;transform:translateX(-50%);text-align:center}
+.home-site .hero-copy h1{margin:0;color:#f7f4ee;font-family:var(--serif);font-size:clamp(64px,8.5vw,108px);font-weight:400;line-height:1.02;letter-spacing:.17em;text-shadow:0 3px 26px #0008}
+.hero-cross{margin:6px auto 9px;color:#f6f2eb;font-family:Georgia,serif;font-weight:300;font-size:35px;line-height:1;text-shadow:0 1px 12px #0008}
+.home-site .hero-subtitle{max-width:none;margin:14px auto 28px;color:#f4f0e9;font-size:11px;line-height:1.5;letter-spacing:.21em;text-shadow:0 1px 16px #000}
+.home-site .hero-actions{justify-content:center}
+.home-site .home-explore{min-width:286px;min-height:50px;justify-content:space-between;padding:0 28px;border:1px solid #ffffff45;border-radius:32px;background:linear-gradient(145deg,#ffffff14,#ffffff05);box-shadow:inset 0 1px #ffffff13,0 8px 28px #0006;color:#f5f1eb;font-size:9px;letter-spacing:.15em;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.home-site .home-explore span{font-size:18px;line-height:1}
+.home-reference-tiles{position:absolute;z-index:3;left:4%;right:4%;bottom:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.home-reference-tile{position:relative;isolation:isolate;display:block;overflow:hidden;min-width:0;height:clamp(180px,16.2vw,228px);border:1px solid #ffffff55;background:#090909;color:#f4f0e9;transition:border-color .22s,transform .28s,box-shadow .28s}
+.home-reference-tile:hover{transform:translateY(-3px);border-color:#ffffff9a;box-shadow:0 14px 36px #0008}
+.home-reference-tile>img,.tile-shade{position:absolute;inset:0;width:100%;height:100%}
+.home-reference-tile>img{z-index:-2;object-fit:cover;object-position:center 42%;filter:brightness(.66) saturate(.75);transition:transform .6s,filter .35s}
+.home-reference-tile:hover>img{transform:scale(1.035);filter:brightness(.82) saturate(.85)}
+.tile-shade{z-index:-1;background:linear-gradient(180deg,#0008 0%,#0002 38%,#0009 100%),linear-gradient(90deg,#0005,transparent 88%)}
+.tile-number{position:absolute;top:20px;left:22px;font-size:10px;letter-spacing:.12em;color:#e6e0d8}
+.tile-title{position:absolute;top:55px;left:22px;right:12px;font-family:var(--serif);font-size:clamp(18px,1.8vw,26px);font-weight:400;line-height:1.2;letter-spacing:.015em}
+.tile-rule{position:absolute;top:96px;left:23px;width:22px;height:1px;background:#f4f0e9b3}
+.tile-note{position:absolute;left:22px;bottom:20px;font-size:9px;letter-spacing:.13em;color:#f0ece5}
+.tile-arrow{position:absolute;right:19px;bottom:16px;font-size:20px;color:#f0ece5;transition:transform .22s}
+.home-reference-tile:hover .tile-arrow{transform:translateX(4px)}
+.home-reference-footer{min-height:76px;display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:18px;padding:18px 5vw;border-top:1px solid #ffffff1c;background:#030303;color:#d6d0c6}
+.home-reference-footer a{font-size:9px;letter-spacing:.13em;white-space:nowrap}
+.home-reference-footer small{text-align:center;font-size:8px;letter-spacing:.17em;color:#b6afa5}
+.home-footer-search span{font-size:18px;vertical-align:-2px;margin-right:8px}
+.home-footer-links{display:flex;justify-content:flex-end;align-items:center;gap:clamp(14px,2.6vw,38px)}
+.home-footer-links a span{margin-right:7px;font-size:15px;vertical-align:-1px}
+.home-reference-footer a:hover{color:#fff}
+@media(max-width:900px){
+ .home-site .navlinks{gap:18px;padding-left:0}
+ .home-site .navlinks a{font-size:8px}
+ .home-site .wordmark{font-size:24px}
+ .home-reference-tiles{left:3.5%;right:3.5%;gap:8px}
+ .home-reference-tile{height:190px}
+ .tile-number{left:14px;top:15px}
+ .tile-title{left:14px;top:48px;font-size:18px}
+ .tile-rule{left:15px;top:82px}
+ .tile-note{left:14px;bottom:15px;font-size:8px}
+ .tile-arrow{right:12px;bottom:11px}
+}
+@media(max-width:650px){
+ .home-site>.topline{height:28px;font-size:7px;letter-spacing:.12em}
+ .home-site>.header{top:28px;height:64px;padding:0 5vw;gap:10px;background:linear-gradient(180deg,#040404b9,#04040430)}
+ .home-site .wordmark{font-size:22px;letter-spacing:.16em}
+ .home-site .menu-toggle{display:inline-flex;order:3;width:26px;flex-basis:26px;font-size:22px}
+ .home-site .bag{margin-left:auto;padding:9px 4px;font-size:8px}
+ .home-site .navlinks{top:64px;left:0;right:0;margin:0;padding:8px 6vw 20px;background:#070707f7;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+ .home-site .navlinks a{font-size:10px}
+ .home-site .home-hero.home-reference-layout{height:calc(100svh + 315px);min-height:860px;max-height:1120px}
+ .home-site .home-hero-art{height:68%;object-position:50% 35%}
+ .home-site .home-hero-shade{background:linear-gradient(180deg,#03040555 0%,#03040500 15%,#03040508 36%,#03040585 55%,#030303 77%,#030303 100%),linear-gradient(90deg,#0005,#0000 50%,#0005)}
+ .home-reference-kicker{top:31%;font-size:9px;letter-spacing:.19em}
+ .home-site .hero-copy{top:35%;width:94%}
+ .home-site .hero-copy h1{font-size:clamp(48px,14vw,74px);letter-spacing:.12em}
+ .hero-cross{font-size:30px;margin:6px auto}
+ .home-site .hero-subtitle{font-size:9px;letter-spacing:.14em;margin:12px auto 21px}
+ .home-site .home-explore{min-width:244px;min-height:46px;padding:0 22px;font-size:8px}
+ .home-reference-tiles{left:5%;right:5%;bottom:17px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .home-reference-tile{height:clamp(150px,39vw,195px)}
+ .tile-number{top:12px;left:13px;font-size:9px}
+ .tile-title{top:38px;left:13px;font-size:19px}
+ .tile-rule{top:72px;left:14px}
+ .tile-note{bottom:13px;left:13px;font-size:7px;letter-spacing:.1em}
+ .tile-arrow{right:12px;bottom:8px;font-size:18px}
+ .home-reference-footer{grid-template-columns:1fr;justify-items:center;gap:16px;padding:21px 5vw 24px}
+ .home-reference-footer small{order:3;font-size:7px;line-height:1.8}
+ .home-footer-links{width:100%;justify-content:center;gap:26px}
+ .home-footer-search{justify-self:center}
+}
+@media(max-width:370px){
+ .home-site .wordmark{font-size:19px}
+ .home-site .bag{font-size:7px}
+ .home-site .home-hero.home-reference-layout{min-height:840px}
+ .tile-title{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){.home-reference-tile,.home-reference-tile>img,.tile-arrow{transition:none}}
