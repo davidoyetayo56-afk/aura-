@@ -395,3 +395,45 @@ img{display:block;max-width:100%}
       linear-gradient(90deg,rgba(3,4,5,0) 0%,rgba(3,4,5,.98) 10%,rgba(3,4,5,.99) 90%,rgba(3,4,5,0) 100%);
   }
 }
+
+/* Collection quick-add and bag flow. Keep the existing page styling intact. */
+.collection-card-actions{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-wrap:wrap;margin-top:8px;
+}
+.collection-card-actions .textlink{margin-top:8px}
+.collection-add{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:40px;padding:0 15px;border-radius:30px;
+  color:#f3eee7;font-size:8px;letter-spacing:.12em;white-space:nowrap;
+  transition:background .2s,border-color .2s,transform .2s;
+}
+.collection-add:hover{background:linear-gradient(145deg,#ffffff24,#ffffff0a);border-color:#ffffff60;transform:translateY(-1px)}
+.collection-add span{font-size:14px;line-height:1}
+.quick-add-backdrop{
+  position:fixed;inset:0;z-index:90;display:grid;place-items:center;
+  padding:20px;background:rgba(0,0,0,.72);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.quick-add-panel{
+  position:relative;width:min(430px,100%);padding:30px;
+  border:1px solid #ffffff2d;border-radius:24px;
+  background:linear-gradient(145deg,rgba(31,31,31,.97),rgba(8,8,8,.97));
+  box-shadow:0 24px 80px #0009;
+}
+.quick-add-close{
+  position:absolute;top:16px;right:17px;width:34px;height:34px;
+  display:grid;place-items:center;border:1px solid #ffffff24;border-radius:50%;
+  background:#ffffff08;font-size:20px;font-weight:300;
+}
+.quick-add-panel h2{margin:15px 34px 8px 0;font-family:var(--serif);font-size:clamp(24px,5vw,34px);font-weight:400;line-height:1.16}
+.quick-add-hint{color:var(--muted);font-size:12px;line-height:1.7;margin:0}
+.quick-add-sizes{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 24px}
+.quick-add-sizes .size-option{min-width:44px;min-height:42px;display:grid;place-items:center}
+.quick-add-confirm{width:100%;justify-content:space-between}
+@media(max-width:650px){
+ .collection-card-actions{align-items:stretch;gap:9px}
+ .collection-card-actions .textlink{margin-top:8px}
+ .collection-add{min-height:42px;padding-inline:13px}
+ .quick-add-panel{padding:25px 21px;border-radius:21px}
+}
