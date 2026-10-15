@@ -45,7 +45,7 @@ function AppShell() {
 
   return (
     <div className={"site" + (route.page === "home" ? " home-site" : "")}>
-      {route.page !== "home" && <>
+      <>
         <div className="topline"><span>FREE WORLDWIDE SHIPPING ON ALL ORDERS</span></div>
         <header className="header">
           <a className="wordmark" href="#/" aria-label="AURAÈ home">AURAÈ<span>✳</span></a>
@@ -58,7 +58,7 @@ function AppShell() {
           </nav>
           <button className="bag glass" type="button" onClick={() => setCartOpen(true)} aria-label={"Open bag with " + count + " items"}>BAG <span>{String(count).padStart(2,"0")}</span> ↗</button>
         </header>
-      </>}
+      </>
 
       <main key={route.page + route.id}>
         {route.page === "home" && <HomePage onOpenBag={() => setCartOpen(true)} />}
@@ -85,44 +85,34 @@ function AppShell() {
 }
 
 function HomePage({ onOpenBag }) {
-  return <section className="home-reference" aria-label="AURAÈ Dreams in Motion homepage">
-    <div className="home-reference-canvas">
-    <img
-      className="home-reference-image"
-      src={asset("aurae-home-reference.webp")}
-      alt="AURAÈ Dreams in Motion campaign. Explore the shop, collections, lookbook and story."
-      width="900"
-      height="720"
-      fetchPriority="high"
-      decoding="sync"
-    />
-    <nav className="home-hotspots" aria-label="Homepage links">
-      <a className="home-hotspot home-brand" href="#/" aria-label="AURAÈ home" />
-      <a className="home-hotspot h-shop" href="#/shop" aria-label="Shop AURAÈ" />
-      <a className="home-hotspot h-collections" href="#/collections" aria-label="Explore collections" />
-      <a className="home-hotspot h-lookbook" href="#/lookbook" aria-label="View lookbook" />
-      <a className="home-hotspot h-about" href="#/about" aria-label="About AURAÈ" />
-      <a className="home-hotspot h-contact" href={contactUrl} target="_blank" rel="noreferrer" aria-label="Contact AURAÈ on WhatsApp" />
-      <button className="home-hotspot h-bag" type="button" onClick={onOpenBag} aria-label="Open shopping bag" />
-      <a className="home-hotspot h-menu" href="#/shop" aria-label="Browse the collection" />
-      <a className="home-hotspot h-hero-cta" href="#/collections" aria-label="Explore collections" />
-      <a className="home-hotspot h-card-shop" href="#/shop" aria-label="New arrivals" />
-      <a className="home-hotspot h-card-collections" href="#/collections" aria-label="Browse collections" />
-      <a className="home-hotspot h-card-lookbook" href="#/lookbook" aria-label="Open lookbook" />
-      <a className="home-hotspot h-card-about" href="#/about" aria-label="Read our story" />
-      <a className="home-hotspot h-search" href="#/shop" aria-label="Search pieces" />
-      <a className="home-hotspot h-instagram" href="#/lookbook" aria-label="View visual diary" />
-      <a className="home-hotspot h-whatsapp" href={contactUrl} target="_blank" rel="noreferrer" aria-label="Chat to AURAÈ on WhatsApp" />
-    </nav>
+  const tiles = [
+    { n: "01", title: "SHOP", note: "NEW ARRIVALS", image: "hoodie.jpg", href: "#/shop" },
+    { n: "02", title: "COLLECTIONS", note: "FIND YOUR PIECE", image: "jersey.jpg", href: "#/collections" },
+    { n: "03", title: "LOOKBOOK", note: "THE AURAÈ WORLD", image: "longsleeve.jpg", href: "#/lookbook" },
+    { n: "04", title: "OUR STORY", note: "DREAMS · FAITH · YOU", image: "tee.jpg", href: "#/about" }
+  ];
+  return <section className="home-hero home-premium-layout" aria-labelledby="campaign-title">
+    <img className="home-premium-art" src={asset("aurae-campaign.svg")} alt="" fetchPriority="high" decoding="async" />
+    <div className="home-premium-shade" aria-hidden="true" />
+    <div className="home-premium-kicker">DREAMS. FAITH. YOU.</div>
+    <div className="home-premium-copy">
+      <p className="eyebrow">A DIFFERENT KIND OF STREETWEAR</p>
+      <h1 id="campaign-title">AURAÈ</h1>
+      <p className="home-premium-subtitle">SAME GIRL. BIGGER DREAMS.</p>
+      <a className="home-premium-cta" href="#/collections">EXPLORE COLLECTIONS <span aria-hidden="true">↗</span></a>
     </div>
-    <nav className="home-mobile-links" aria-label="Browse AURAÈ">
-      <a href="#/shop">SHOP <span>↗</span></a>
-      <a href="#/collections">COLLECTIONS <span>↗</span></a>
-      <a href="#/lookbook">LOOKBOOK <span>↗</span></a>
-      <a href="#/about">OUR STORY <span>↗</span></a>
-      <a href={contactUrl} target="_blank" rel="noreferrer">WHATSAPP <span>↗</span></a>
-      <button type="button" onClick={onOpenBag}>BAG <span>↗</span></button>
+    <nav className="home-premium-tiles" aria-label="Explore AURAÈ">
+      {tiles.map((tile) => <a className="home-premium-tile" href={tile.href} key={tile.n}>
+        <img src={asset(tile.image)} alt="" loading="lazy" decoding="async" />
+        <span className="home-premium-tile-shade" aria-hidden="true" />
+        <span className="home-premium-tile-number">{tile.n}</span>
+        <span className="home-premium-tile-copy"><strong>{tile.title}</strong><small>{tile.note}</small></span>
+        <span className="home-premium-tile-arrow" aria-hidden="true">↗</span>
+      </a>)}
     </nav>
+    <button className="home-premium-bag" type="button" onClick={onOpenBag} aria-label="Open shopping bag">
+      BAG <span aria-hidden="true">↗</span>
+    </button>
   </section>;
 }
 
