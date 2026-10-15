@@ -46,7 +46,7 @@ function AppShell() {
   return (
     <div className={"site" + (route.page === "home" ? " home-site" : "")}>
       <>
-        <div className="topline"><span>FREE WORLDWIDE SHIPPING ON ALL ORDERS</span></div>
+        <div className="topline"><span>DREAMS · FAITH · YOU</span></div>
         <header className="header">
           <a className="wordmark" href="#/" aria-label="AURAÈ home">AURAÈ<span>✳</span></a>
           <button className="menu-toggle glass" type="button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? "×" : "☰"}</button>
