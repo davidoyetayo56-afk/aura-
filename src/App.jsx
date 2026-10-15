@@ -86,6 +86,7 @@ function AppShell() {
 
 function HomePage({ onOpenBag }) {
   return <section className="home-reference" aria-label="AURAÈ Dreams in Motion homepage">
+    <div className="home-reference-canvas">
     <img
       className="home-reference-image"
       src={asset("aurae-home-reference.webp")}
@@ -113,6 +114,7 @@ function HomePage({ onOpenBag }) {
       <a className="home-hotspot h-instagram" href="#/lookbook" aria-label="View visual diary" />
       <a className="home-hotspot h-whatsapp" href={contactUrl} target="_blank" rel="noreferrer" aria-label="Chat to AURAÈ on WhatsApp" />
     </nav>
+    </div>
     <nav className="home-mobile-links" aria-label="Browse AURAÈ">
       <a href="#/shop">SHOP <span>↗</span></a>
       <a href="#/collections">COLLECTIONS <span>↗</span></a>
