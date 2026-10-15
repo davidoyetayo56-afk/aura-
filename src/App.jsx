@@ -90,7 +90,8 @@ function HomePage() {
     { n:"04", title:"ABOUT", note:"OUR STORY", image:"lookbook-2.png", href:"#/about" },
   ];
   return <section className="home-hero home-reference-layout" aria-labelledby="campaign-title">
-    <img className="home-hero-art" src={asset("aurae-campaign.svg")} alt="" fetchPriority="high" />
+    <img className="home-hero-art" src={asset("aurae-approved-hero.webp")} alt="" fetchPriority="high" decoding="async" />
+    <div className="home-art-mask" aria-hidden="true" />
     <div className="home-hero-shade" />
     <div className="home-reference-kicker">DREAMS. FAITH. YOU.</div>
     <div className="hero-copy">
