@@ -35,7 +35,7 @@ function AppShell() {
     </header>
     <main key={route.page + route.id}>
       {route.page === "home" && <><section className="hero">
-        <img src={asset("lookbook-1.png")} alt="" className="hero-bg" fetchPriority="high"/>
+        <img src={asset("aurae-campaign.svg")} alt="" className="hero-bg" fetchPriority="high"/>
         <div className="hero-overlay"/>
         <div className="hero-copy"><p className="eyebrow">AURAÈ / COLLECTION 01</p><h1>WEAR<br/><i>YOUR WHY.</i></h1><p>For the ones with a bigger picture. Pieces that carry the dream, the faith, and the person you're becoming.</p><a className="pill primary" href="#/shop">ENTER THE WORLD <span>↗</span></a></div>
         <div className="hero-caption"><span>01 — THE VISION</span><span>SCROLL TO EXPLORE ↓</span></div>
