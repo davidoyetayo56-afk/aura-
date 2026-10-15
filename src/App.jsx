@@ -146,6 +146,8 @@ function ProductGrid({ items, addToBag }) {
 }
 
 function CollectionsPage({ addToBag }) {
+  const [quickAddProduct, setQuickAddProduct] = useState(null);
+  const [quickSize, setQuickSize] = useState("");
   const collections = [
     { id: "longsleeve", name: "LET BE GOOD", desc: "A soft canvas for a strong message." },
     { id: "faith-hoodie", name: "DREAMS · FAITH · YOU", desc: "Statement graphics, grounded in faith." },
@@ -167,12 +169,34 @@ function CollectionsPage({ addToBag }) {
         </a>
         <div className="collection-card-actions">
           <a className="textlink" href={"#/product/" + collection.id}>VIEW PIECE ↗</a>
-          <button className="collection-add glass" type="button" onClick={() => addToBag(product, product.sizes[0] || "One size")} aria-label={"Add " + product.name + " to bag"}>
-            ADD TO BAG <span aria-hidden="true">＋</span>
+          <button className="collection-add glass" type="button" onClick={() => {
+            if (product.sizes.length) {
+              setQuickAddProduct(product);
+              setQuickSize(product.sizes[0]);
+            } else {
+              addToBag(product, "One size");
+            }
+          }} aria-label={"Quick add " + product.name}>
+            QUICK ADD <span aria-hidden="true">＋</span>
           </button>
         </div>
       </article>;
     })}</div>
+    {quickAddProduct && <div className="quick-add-backdrop" role="presentation" onClick={() => setQuickAddProduct(null)}>
+      <section className="quick-add-panel glass" role="dialog" aria-modal="true" aria-labelledby="quick-add-title" onClick={(event) => event.stopPropagation()}>
+        <button className="quick-add-close" type="button" onClick={() => setQuickAddProduct(null)} aria-label="Close size selector">×</button>
+        <p className="eyebrow">AURAÈ / QUICK ADD</p>
+        <h2 id="quick-add-title">{quickAddProduct.name}</h2>
+        <p className="quick-add-hint">Choose your size to add this piece to your bag.</p>
+        <div className="quick-add-sizes" role="group" aria-label="Choose size">
+          {quickAddProduct.sizes.map((size) => <button key={size} type="button" className={quickSize === size ? "size-option selected" : "size-option"} onClick={() => setQuickSize(size)}>{size}</button>)}
+        </div>
+        <button className="pill primary quick-add-confirm" type="button" onClick={() => {
+          addToBag(quickAddProduct, quickSize);
+          setQuickAddProduct(null);
+        }}>ADD TO BAG <span>＋</span></button>
+      </section>
+    </div>}
   </section>;
 }
 
