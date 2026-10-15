@@ -68,7 +68,7 @@ function AppShell() {
           <p className="intro">Considered details. Statement graphics. Pieces made to mean something. Message us to confirm price, sizes and availability.</p>
           <ProductGrid items={products} addToBag={addToBag} />
         </section>}
-        {route.page === "collections" && <CollectionsPage />}
+        {route.page === "collections" && <CollectionsPage addToBag={addToBag} />}
         {route.page === "product" && selected && <ProductPage key={selected.id} product={selected} addToBag={addToBag} />}
         {route.page === "lookbook" && <LookbookPage />}
         {route.page === "about" && <AboutPage />}
@@ -145,7 +145,7 @@ function ProductGrid({ items, addToBag }) {
   )}</div>;
 }
 
-function CollectionsPage() {
+function CollectionsPage({ addToBag }) {
   const collections = [
     { id: "longsleeve", name: "LET BE GOOD", desc: "A soft canvas for a strong message." },
     { id: "faith-hoodie", name: "DREAMS · FAITH · YOU", desc: "Statement graphics, grounded in faith." },
@@ -159,10 +159,19 @@ function CollectionsPage() {
     <p className="intro">Different pieces. One point of view. Explore the designs and ask us about the current drop.</p>
     <div className="collection-grid">{collections.map((collection) => {
       const product = products.find((item) => item.id === collection.id);
-      return <a className="collection-card" href={"#/product/" + collection.id} key={collection.id}>
-        <div className="collection-image"><img src={product.thumbnail} alt={product.name} loading="lazy" decoding="async"/><span>EXPLORE ↗</span></div>
-        <span className="collection-desc">{collection.desc}</span><h2>{collection.name}</h2>
-      </a>;
+      if (!product) return null;
+      return <article className="collection-card" key={collection.id}>
+        <a className="collection-main" href={"#/product/" + collection.id} aria-label={"View " + product.name}>
+          <div className="collection-image"><img src={product.thumbnail} alt={product.name} loading="lazy" decoding="async"/><span>EXPLORE ↗</span></div>
+          <span className="collection-desc">{collection.desc}</span><h2>{collection.name}</h2>
+        </a>
+        <div className="collection-card-actions">
+          <a className="textlink" href={"#/product/" + collection.id}>VIEW PIECE ↗</a>
+          <button className="collection-add glass" type="button" onClick={() => addToBag(product, product.sizes[0] || "One size")} aria-label={"Add " + product.name + " to bag"}>
+            ADD TO BAG <span aria-hidden="true">＋</span>
+          </button>
+        </div>
+      </article>;
     })}</div>
   </section>;
 }
