@@ -44,21 +44,22 @@ function AppShell() {
   };
 
   return (
-    <div className="site">
-      <div className="topline"><span>DREAMS · FAITH · YOU</span><i /> <span>INDEPENDENT STREETWEAR</span></div>
+    <div className={"site" + (route.page === "home" ? " home-site" : "")}>
+      <div className="topline"><span>FREE WORLDWIDE SHIPPING ON ALL ORDERS</span></div>
       <header className="header">
         <a className="wordmark" href="#/" aria-label="AURAÈ home">AURAÈ<span>✳</span></a>
-        <button className="menu-toggle glass" type="button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? "CLOSE ×" : "MENU ☰"}</button>
+        <button className="menu-toggle glass" type="button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? "×" : "☰"}</button>
         <nav className={"navlinks" + (menuOpen ? " open" : "")} aria-label="Main navigation">
-          {[["shop","SHOP"],["collections","COLLECTIONS"],["lookbook","LOOKBOOK"],["about","OUR STORY"]].map(([page,label]) =>
+          {[["shop","SHOP"],["collections","COLLECTIONS"],["lookbook","LOOKBOOK"],["about","ABOUT"]].map(([page,label]) =>
             <a key={page} className={route.page === page ? "active" : ""} href={"#/" + page}>{label}</a>
           )}
+          <a href={contactUrl} target="_blank" rel="noreferrer">CONTACT</a>
         </nav>
         <button className="bag glass" type="button" onClick={() => setCartOpen(true)} aria-label={"Open bag with " + count + " items"}>BAG <span>{String(count).padStart(2,"0")}</span> ↗</button>
       </header>
 
       <main key={route.page + route.id}>
-        {route.page === "home" && <HomePage addToBag={addToBag} />}
+        {route.page === "home" && <HomePage />}
         {route.page === "shop" && <section className="catalog">
           <p className="eyebrow">AURAÈ / COLLECTION 01</p>
           <h1>THE <i>PIECES.</i></h1>
@@ -75,61 +76,54 @@ function AppShell() {
           <section className="catalog empty-state"><p className="eyebrow">AURAÈ</p><h1>PIECE <i>NOT FOUND.</i></h1><a className="pill primary" href="#/shop">BACK TO THE COLLECTION ↗</a></section>}
       </main>
 
-      <Footer />
+      {route.page === "home" ? <HomeFooter /> : <Footer />}
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );
 }
 
-function HomePage({ addToBag }) {
-  return <>
-    <section className="home-hero" aria-labelledby="campaign-title">
-      <img className="home-hero-art" src={asset("aurae-campaign.svg")} alt="" fetchPriority="high" />
-      <div className="home-hero-shade" />
-      <div className="hero-topline"><span>COLLECTION 01</span><span>DESIGNED WITH INTENTION</span></div>
-      <div className="hero-copy">
-        <p className="eyebrow">AURAÈ PRESENTS</p>
-        <h1 id="campaign-title">DREAMS <i>IN MOTION.</i></h1>
-        <p className="hero-subtitle">A language of your own. A reminder of who you're becoming.</p>
-        <div className="hero-actions">
-          <a className="pill primary" href="#/shop">SHOP THE PIECES <span>↗</span></a>
-          <a className="pill outline" href="#/about">THE AURAÈ STORY <span>↗</span></a>
-        </div>
+function HomePage() {
+  const tiles = [
+    { n:"01", title:"SHOP", note:"NEW ARRIVALS", image:"hoodie.jpg", href:"#/shop" },
+    { n:"02", title:"COLLECTIONS", note:"EXPLORE NOW", image:"jersey.jpg", href:"#/collections" },
+    { n:"03", title:"LOOKBOOK", note:"VIEW EDITORIAL", image:"lookbook-1.png", href:"#/lookbook" },
+    { n:"04", title:"ABOUT", note:"OUR STORY", image:"lookbook-2.png", href:"#/about" },
+  ];
+  return <section className="home-hero home-reference-layout" aria-labelledby="campaign-title">
+    <img className="home-hero-art" src={asset("aurae-campaign.svg")} alt="" fetchPriority="high" />
+    <div className="home-hero-shade" />
+    <div className="home-reference-kicker">DREAMS. FAITH. YOU.</div>
+    <div className="hero-copy">
+      <h1 id="campaign-title">AURAÈ</h1>
+      <div className="hero-cross" aria-hidden="true">＋</div>
+      <p className="hero-subtitle">SAME GIRL. BIGGER DREAMS.</p>
+      <div className="hero-actions">
+        <a className="pill outline home-explore" href="#/collections">EXPLORE COLLECTIONS <span>→</span></a>
       </div>
-      <div className="hero-foot"><span>DREAMS. FAITH. YOU.</span><span>SCROLL TO EXPLORE ↓</span></div>
-    </section>
+    </div>
+    <div className="home-reference-tiles" aria-label="Explore AURAÈ">
+      {tiles.map((tile) => <a className="home-reference-tile" href={tile.href} key={tile.n}>
+        <img src={asset(tile.image)} alt="" loading="lazy" decoding="async" />
+        <span className="tile-shade" />
+        <span className="tile-number">{tile.n}</span>
+        <span className="tile-title">{tile.title}</span>
+        <span className="tile-rule" />
+        <span className="tile-note">{tile.note}</span>
+        <span className="tile-arrow" aria-hidden="true">→</span>
+      </a>)}
+    </div>
+  </section>;
+}
 
-    <section className="manifesto">
-      <div className="manifesto-mark">A<span>✳</span></div>
-      <p className="eyebrow">NOT JUST WHAT YOU WEAR</p>
-      <h2>Wear the vision.<br/><i>Walk in faith.</i></h2>
-      <p className="manifesto-copy">AURAÈ is independent streetwear for the becoming. Expressive graphics, considered pieces, and a message that carries beyond the fabric.</p>
-      <a className="textlink" href="#/about">WHAT WE STAND FOR ↗</a>
-    </section>
-
-    <section className="home-feature">
-      <div className="feature-copy">
-        <p className="eyebrow">THE SIGNATURE PIECE</p>
-        <h2>Make room<br/>for <i>the dream.</i></h2>
-        <p>Washed black cotton. Hand-drawn energy. A bear carrying a bigger message. Built to be worn, made to be remembered.</p>
-        <a className="pill outline" href="#/product/aurae-tee">DISCOVER THE TEE ↗</a>
-      </div>
-      <a className="feature-product-image" href="#/product/aurae-tee" aria-label="View the oversized AURAÈ tee">
-        <img src={asset("tee.jpg")} alt="AURAÈ oversized black tee, showing its front and teddy-bear graphic back" loading="lazy" decoding="async"/>
-        <span className="image-caption">01 / THE OVERSIZED TEE</span>
-      </a>
-    </section>
-
-    <section className="home-arrivals">
-      <div className="section-heading"><div><p className="eyebrow">SELECTED PIECES</p><h2>THE FIRST <i>FOUR.</i></h2></div><a className="textlink" href="#/shop">VIEW ALL PIECES ↗</a></div>
-      <ProductGrid items={products.slice(0,4)} addToBag={addToBag} />
-    </section>
-    <section className="home-closing">
-      <p className="eyebrow">YOUR STORY IS STILL UNFOLDING</p>
-      <h2>Dream bigger.<br/><i>Stay grounded.</i></h2>
-      <a className="pill primary" href="#/collections">EXPLORE COLLECTION 01 ↗</a>
-    </section>
-  </>;
+function HomeFooter() {
+  return <footer className="home-reference-footer">
+    <a href="#/shop" className="home-footer-search"><span aria-hidden="true">⌕</span> SEARCH</a>
+    <small>© 2026 AURAÈ. ALL RIGHTS RESERVED.</small>
+    <div className="home-footer-links">
+      <a href="#/lookbook" aria-label="View AURAÈ lookbook"><span aria-hidden="true">◎</span> INSTAGRAM</a>
+      <a href={contactUrl} target="_blank" rel="noreferrer"><span aria-hidden="true">◉</span> WHATSAPP</a>
+    </div>
+  </footer>;
 }
 
 function ProductGrid({ items, addToBag }) {
