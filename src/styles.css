@@ -339,3 +339,15 @@ img{display:block;max-width:100%}
  .tile-title{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){.home-reference-tile,.home-reference-tile>img,.tile-arrow{transition:none}}
+
+/* Keep the desktop navigation in the same reading order as the approved reference. */
+.home-site .wordmark{order:1;flex:0 0 auto}
+.home-site .navlinks{order:2}
+.home-site .bag{order:3;flex:0 0 auto}
+.home-site .menu-toggle{order:4;flex:0 0 30px}
+@media(max-width:650px){
+ .home-site .wordmark{order:1}
+ .home-site .navlinks{order:2}
+ .home-site .bag{order:3}
+ .home-site .menu-toggle{order:4}
+}
