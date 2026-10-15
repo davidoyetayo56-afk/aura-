@@ -32,7 +32,8 @@ function AppShell() {
   const enquiry = (p) => wa("Hello AURAÈ, I'm interested in " + p.name + ". Please confirm current price, available sizes and delivery details.");
   const title = ({home:"Wear your why.",shop:"The collection",collections:"Collections",lookbook:"Beyond the surface",about:"Dreams. Faith. You."})[route.page] || (selected?.name || "AURAÈ");
   return <div className={route.page === "home" ? "site home-site" : "site"}>
-    {route.page !== "home" && <>\n    <div className="topline">DREAMS · FAITH · YOU <span>INDEPENDENT STREETWEAR</span></div>
+    {route.page !== "home" && <>
+    <div className="topline">DREAMS · FAITH · YOU <span>INDEPENDENT STREETWEAR</span></div>
     <header className="header">
       <a className="wordmark" href="#/">AURAÈ<span>+</span></a>
       <button className="menu-toggle glass" onClick={() => setMenu(!menu)} aria-label="Toggle navigation">{menu ? "CLOSE ×" : "MENU ☰"}</button>
@@ -41,7 +42,8 @@ function AppShell() {
       </nav>
       <a className="bag glass" href="#/shop">EXPLORE <span>↗</span></a>
     </header>
-    </>}\n    <main key={route.page + route.id}>
+    </>}
+    <main key={route.page + route.id}>
       {route.page === "home" && <HomeReference contact={contact} />}
       {route.page === "shop" && <section className="catalog"><p className="eyebrow">AURAÈ / THE PIECES</p><h1>THE <i>COLLECTION.</i></h1><p className="intro">Explore the current designs. Message us to confirm pricing, sizes and availability.</p><ProductGrid items={products} enquiry={enquiry}/></section>}
       {route.page === "collections" && <section className="catalog"><p className="eyebrow">CURATED BY AURAÈ</p><h1>FIND YOUR <i>WORLD.</i></h1><div className="collection-grid">{[["LET BE GOOD","Graphic essentials","longsleeve"],["FAITH COLLECTION","Dreams. Faith. You.","faith-hoodie"],["SIGNATURE PIECES","Everyday statements","aurae-tee"]].map(([name,desc,id])=><a className="collection-card" href={"#/product/"+id} key={name}><img src={asset(products.find(p=>p.id===id)?.thumbnail?.replace(/^.*images\//,"") || "lookbook-1.png")} alt=""/><span>{desc}</span><h2>{name}</h2><b>EXPLORE ↗</b></a>)}</div></section>}
@@ -51,7 +53,7 @@ function AppShell() {
       {!["home","shop","collections","lookbook","about","product"].includes(route.page) && <section className="catalog"><h1>PAGE NOT FOUND.</h1><a className="pill primary" href="#/">RETURN HOME ↗</a></section>}
       {route.page === "product" && !selected && <section className="catalog"><h1>PIECE NOT FOUND.</h1><a className="pill primary" href="#/shop">BACK TO SHOP ↗</a></section>}
     </main>
-    {route.page !== "home" && <><footer className="footer"><a className="wordmark" href="#/">AURAÈ<span>+</span></a><p>DREAMS · FAITH · YOU</p><nav><a href="#/shop">SHOP</a><a href="#/lookbook">LOOKBOOK</a><a href="#/about">ABOUT</a><a href={contact} target="_blank" rel="noreferrer">CONTACT ↗</a></nav><small>© {new Date().getFullYear()} AURAÈ. ALL RIGHTS RESERVED.</small></footer>
+    {route.page !== "home" && <><footer className="footer"><a className="wordmark" href="#/">AURAÈ<span>+</span></a><p>DREAMS · FAITH · YOU</p><nav><a href="#/shop">SHOP</a><a href="#/lookbook">LOOKBOOK</a><a href="#/about">ABOUT</a><a href={contact} target="_blank" rel="noreferrer">CONTACT ↗</a></nav><small>© {new Date().getFullYear()} AURAÈ. ALL RIGHTS RESERVED.</small></footer></>}
   </div>;
 }
 function HomeReference({ contact }) {
