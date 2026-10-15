@@ -194,7 +194,7 @@ function ProductGrid({ items, addToBag }) {
       </a>
       <div className="product-meta">
         <div><small>{product.category.toUpperCase()}</small><h2><a href={"#/product/" + product.id}>{product.name}</a></h2></div>
-        <button className="plus" type="button" onClick={() => addToBag(product, product.sizes[0] || "One size")} aria-label={"Add " + product.name + " to bag"}>＋</button>
+        <button className="plus" type="button" onClick={(event) => addToBag(product, product.sizes[0] || "One size", event.currentTarget.getBoundingClientRect())} aria-label={"Add " + product.name + " to bag"}>＋</button>
       </div>
       <p className="product-description">{product.description}</p>
       <a className="textlink" href={"#/product/" + product.id}>DETAILS & SIZING ↗</a>
@@ -226,12 +226,12 @@ function CollectionsPage({ addToBag }) {
         </a>
         <div className="collection-card-actions">
           <a className="textlink" href={"#/product/" + collection.id}>VIEW PIECE ↗</a>
-          <button className="collection-add glass" type="button" onClick={() => {
+          <button className="collection-add glass" type="button" onClick={(event) => {
             if (product.sizes.length) {
               setQuickAddProduct(product);
               setQuickSize(product.sizes[0]);
             } else {
-              addToBag(product, "One size");
+              addToBag(product, "One size", event.currentTarget.getBoundingClientRect());
             }
           }} aria-label={"Quick add " + product.name}>
             QUICK ADD <span aria-hidden="true">＋</span>
@@ -248,8 +248,8 @@ function CollectionsPage({ addToBag }) {
         <div className="quick-add-sizes" role="group" aria-label="Choose size">
           {quickAddProduct.sizes.map((size) => <button key={size} type="button" className={quickSize === size ? "size-option selected" : "size-option"} onClick={() => setQuickSize(size)}>{size}</button>)}
         </div>
-        <button className="pill primary quick-add-confirm" type="button" onClick={() => {
-          addToBag(quickAddProduct, quickSize);
+        <button className="pill primary quick-add-confirm" type="button" onClick={(event) => {
+          addToBag(quickAddProduct, quickSize, event.currentTarget.getBoundingClientRect());
           setQuickAddProduct(null);
         }}>ADD TO BAG <span>＋</span></button>
       </section>
@@ -259,7 +259,6 @@ function CollectionsPage({ addToBag }) {
 
 function ProductPage({ product, addToBag }) {
   const [size, setSize] = useState(product.sizes[0] || "One size");
-  const [notice, setNotice] = useState(false);
   return <section className="product-page">
     <div className="product-image"><img src={product.thumbnail} alt={product.name + " design reference, including the visible front and back"} fetchPriority="high" decoding="async"/></div>
     <div className="product-info">
@@ -269,13 +268,12 @@ function ProductPage({ product, addToBag }) {
       <p>{product.description}</p>
       <div className="notice"><span className="notice-dot"/> Current pricing and availability are confirmed with AURAÈ before an order is finalised.</div>
       <div className="size-block"><span className="eyebrow">SELECT SIZE</span><div className="sizes">{product.sizes.length ? product.sizes.map((option) =>
-        <button className={size === option ? "size-option selected" : "size-option"} type="button" key={option} onClick={() => { setSize(option); setNotice(false); }}>{option}</button>
+        <button className={size === option ? "size-option selected" : "size-option"} type="button" key={option} onClick={() => { setSize(option); }}>{option}</button>
       ) : <span className="size-option selected">ONE SIZE</span>}</div></div>
       <div className="product-actions">
-        <button className="pill primary add-button" type="button" onClick={() => { addToBag(product, size); setNotice(true); }}>ADD TO BAG <span>＋</span></button>
+        <button className="pill primary add-button" type="button" onClick={(event) => { addToBag(product, size, event.currentTarget.getBoundingClientRect()); }}>ADD TO BAG <span>＋</span></button>
         <a className="pill outline" href={enquiryUrl(product)} target="_blank" rel="noreferrer">ASK ABOUT THIS PIECE ↗</a>
       </div>
-      {notice && <p className="added-note" role="status">Added to your bag. You can keep exploring or send your selection to AURAÈ on WhatsApp.</p>}
       <a className="textlink" href="#/shop">← BACK TO THE COLLECTION</a>
     </div>
   </section>;
