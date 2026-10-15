@@ -1,9 +1,26 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { whatsappUrl } from "../utils/whatsapp";
 const Ctx = createContext(null);
 export const useCart = () => useContext(Ctx);
 export function CartProvider({ children }) {
-  const [items, setItems] = useState([]); // {key,product,size,qty}
+  const [items, setItems] = useState(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const saved = window.localStorage.getItem("aurae-shopping-bag");
+      const parsed = saved ? JSON.parse(saved) : [];
+      return Array.isArray(parsed) ? parsed.filter((item) => item && item.key && item.product && Number.isFinite(item.qty) && item.qty > 0) : [];
+    } catch {
+      return [];
+    }
+  }); // {key, product, size, qty}
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem("aurae-shopping-bag", JSON.stringify(items));
+    } catch {
+      // The bag continues to work for the current session if storage is unavailable.
+    }
+  }, [items]);
   const add = (product, size) => setItems((c) => {
     const key = product.id + "|" + (size || "");
     return c.find((i) => i.key === key) ? c.map((i) => i.key === key ? { ...i, qty: i.qty + 1 } : i) : [...c, { key, product, size, qty: 1 }];
