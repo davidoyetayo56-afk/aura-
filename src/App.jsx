@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CartProvider, useCart } from "./state/cart.jsx";
 import CartDrawer from "./components/CartDrawer.jsx";
+import FloatingTote from "./components/FloatingTote.jsx";
 import { products } from "./data/products.js";
 import { WHATSAPP_NUMBER } from "./config.js";
 
@@ -19,7 +20,13 @@ function AppShell() {
   const [route, setRoute] = useState(readRoute);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const { count, add } = useCart();
+  const [flight, setFlight] = useState(null);
+  const [addedNotice, setAddedNotice] = useState(null);
+  const { items, count, add } = useCart();
+  const toteButtonRef = useRef(null);
+  const flightTimerRef = useRef(null);
+  const noticeTimerRef = useRef(null);
+  const flightSequenceRef = useRef(0);
   const selected = products.find((product) => product.id === route.id);
 
   useEffect(() => {
@@ -38,10 +45,52 @@ function AppShell() {
     document.title = "AURAÈ — " + (pageNames[route.page] || "Independent Streetwear");
   }, [route.page, selected?.name]);
 
-  const addToBag = (product, size) => {
-    add(product, size || "One size");
-    setCartOpen(true);
+  const addToBag = (product, size, sourceRect) => {
+    const selectedSize = size || "One size";
+    const existing = items.find((item) => item.key === product.id + "|" + selectedSize);
+    add(product, selectedSize);
+    setCartOpen(false);
+
+    const target = toteButtonRef.current ? toteButtonRef.current.getBoundingClientRect() : null;
+    const origin = sourceRect || target || {
+      left: window.innerWidth / 2, top: window.innerHeight / 2, width: 42, height: 42
+    };
+    const width = 92;
+    const height = 76;
+    const left = origin.left + origin.width / 2 - width / 2;
+    const top = origin.top + origin.height / 2 - height / 2;
+    const targetX = target ? target.left + target.width / 2 : window.innerWidth - 58;
+    const targetY = target ? target.top + target.height / 2 : window.innerHeight - 58;
+    flightSequenceRef.current += 1;
+    const flightId = flightSequenceRef.current;
+
+    setFlight({
+      id: flightId,
+      image: product.thumbnail,
+      left,
+      top,
+      width,
+      height,
+      dx: targetX - (left + width / 2),
+      dy: targetY - (top + height / 2)
+    });
+    if (flightTimerRef.current) window.clearTimeout(flightTimerRef.current);
+    flightTimerRef.current = window.setTimeout(() => setFlight(null), 780);
+
+    setAddedNotice({
+      id: flightId,
+      product,
+      size: selectedSize,
+      qty: existing ? existing.qty + 1 : 1
+    });
+    if (noticeTimerRef.current) window.clearTimeout(noticeTimerRef.current);
+    noticeTimerRef.current = window.setTimeout(() => setAddedNotice(null), 4200);
   };
+
+  useEffect(() => () => {
+    if (flightTimerRef.current) window.clearTimeout(flightTimerRef.current);
+    if (noticeTimerRef.current) window.clearTimeout(noticeTimerRef.current);
+  }, []);
 
   return (
     <div className={"site" + (route.page === "home" ? " home-site" : "")}>
@@ -80,6 +129,14 @@ function AppShell() {
 
       {route.page !== "home" && <Footer />}
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+      {["shop", "collections", "product"].includes(route.page) && <FloatingTote
+        count={count}
+        buttonRef={toteButtonRef}
+        flight={flight}
+        notice={addedNotice}
+        onDismissNotice={() => setAddedNotice(null)}
+        onOpen={() => { setAddedNotice(null); setCartOpen(true); }}
+      />}
     </div>
   );
 }
