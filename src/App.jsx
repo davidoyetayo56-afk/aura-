@@ -94,6 +94,7 @@ function AppShell() {
 
   return (
     <div className={"site" + (route.page === "home" ? " home-site" : "")}>
+      <div className="dopamine-watermark" aria-label="Dopamine trademark watermark">DOPAMINE<span>®</span></div>
       <>
         <div className="topline"><span>DREAMS · FAITH · YOU</span></div>
         <header className="header">
