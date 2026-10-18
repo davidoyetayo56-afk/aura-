@@ -12,7 +12,7 @@ export default function CartDrawer({ open, onClose }) {
       <div className="drawer-items">
         {!items.length && <p className="dim cart-empty">Your bag is waiting for its first piece.</p>}
         {items.map((item) => <div className="line" key={item.key}>
-          <img src={item.product.thumbnail} alt={item.product.name}/>
+          <div className="cart-item-mark" aria-hidden="true"><span>AURAÈ</span></div>
           <div>
             <b>{item.product.name}</b>
             <small>{item.size && item.size !== "One size" ? "Size " + item.size : "One size"} · Qty {item.qty}</small>
