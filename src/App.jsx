@@ -206,30 +206,27 @@ function CollectionsPage({ addToBag }) {
   const [quickAddProduct, setQuickAddProduct] = useState(null);
   const [quickSize, setQuickSize] = useState("");
   const collections = [
-    { id: "spider-shorts", name: "SPIDER SHORTS", desc: "Light grey shorts with statement spider artwork." },
-    { id: "thorn-shirt", name: "THORN SHIRT", desc: "Red button-up. Black graphic. All AURAÈ." },
-    { id: "money-maker-tee", name: "MONEY MAKER TEE", desc: "Oversized black tee with the red back print." }
+    { id: "aurae-spider-shorts", name: "SPIDER SHORTS", desc: "The spider motif. Grey heavyweight fleece." },
+    { id: "aurae-thorn-shirt", name: "THORN SHIRT", desc: "A sharp red silhouette with thorn artwork." },
+    { id: "aurae-money-maker-tee", name: "MONEY MAKER TEE", desc: "Oversized black with the red AURAÈ print." }
   ];
   return <section className="catalog">
-    <p className="eyebrow">CURATED BY AURAÈ</p><h1>FIND YOUR <i>WORLD.</i></h1>
-    <p className="intro">Different pieces. One point of view. Explore the designs and ask us about the current drop.</p>
+    <p className="eyebrow">AURAÈ / COLLECTION 01</p>
+    <h1>THE NEW <i>DROP.</i></h1>
+    <p className="intro">Three new statements. One unmistakable point of view. Select a size and add your piece to the AURAÈ tote.</p>
     <div className="collection-grid">{collections.map((collection) => {
       const product = products.find((item) => item.id === collection.id);
       if (!product) return null;
       return <article className="collection-card" key={collection.id}>
         <a className="collection-main" href={"#/product/" + collection.id} aria-label={"View " + product.name}>
-          <div className="collection-image"><img src={product.thumbnail} alt={product.name} loading="lazy" decoding="async"/><span>EXPLORE ↗</span></div>
+          <div className="collection-image"><img src={product.thumbnail} alt={product.name} loading="lazy" decoding="async"/><span>VIEW PIECE ↗</span></div>
           <span className="collection-desc">{collection.desc}</span><h2>{collection.name}</h2>
         </a>
         <div className="collection-card-actions">
-          <a className="textlink" href={"#/product/" + collection.id}>VIEW PIECE ↗</a>
-          <button className="collection-add glass" type="button" onClick={(event) => {
-            if (product.sizes.length) {
-              setQuickAddProduct(product);
-              setQuickSize(product.sizes[0]);
-            } else {
-              addToBag(product, "One size", event.currentTarget.getBoundingClientRect());
-            }
+          <a className="textlink" href={"#/product/" + collection.id}>DETAILS ↗</a>
+          <button className="collection-add glass" type="button" onClick={() => {
+            setQuickAddProduct(product);
+            setQuickSize(product.sizes[0] || "One size");
           }} aria-label={"Quick add " + product.name}>
             QUICK ADD <span aria-hidden="true">＋</span>
           </button>
@@ -277,15 +274,22 @@ function ProductPage({ product, addToBag }) {
 }
 
 function LookbookPage() {
+  const looks = [
+    { image: "aurae-spider-shorts.svg", title: "01 / THE SPIDER SHORTS", note: "Grey fleece · Black spider artwork" },
+    { image: "aurae-thorn-shirt.svg", title: "02 / THE THORN SHIRT", note: "Red cotton · Signature thorn crest" },
+    { image: "aurae-money-maker-tee.svg", title: "03 / MONEY MAKER", note: "Oversized black · AURAÈ red print" }
+  ];
   return <section className="catalog">
-    <p className="eyebrow">AURAÈ / VISUAL DIARY</p><h1>BEYOND THE <i>SURFACE.</i></h1>
-    <p className="intro">A study in intention, expression and becoming. The pieces, seen up close.</p>
+    <p className="eyebrow">AURAÈ / VISUAL DIARY</p>
+    <h1>COLLECTION <i>01.</i></h1>
+    <p className="intro">The new AURAÈ silhouettes, presented front and back.</p>
     <div className="lookbook-grid lookbook-new-drop">
-      <figure><img src={asset("aurae-spider-shorts.webp")} alt="Chrome mannequin wearing the AURAÈ Spider Shorts" loading="lazy" decoding="async"/><figcaption>01 / SPIDER SHORTS</figcaption></figure>
-      <figure><img src={asset("aurae-thorn-shirt.webp")} alt="Chrome mannequins modelling the AURAÈ Thorn Shirt front and back" loading="lazy" decoding="async"/><figcaption>02 / THORN SHIRT</figcaption></figure>
-      <figure><img src={asset("aurae-money-maker-tee.webp")} alt="Chrome mannequins wearing the AURAÈ Money Maker Tee front and back" loading="lazy" decoding="async"/><figcaption>03 / MONEY MAKER</figcaption></figure>
+      {looks.map((look) => <figure key={look.image}>
+        <img src={asset(look.image)} alt={look.title} loading="lazy" decoding="async"/>
+        <figcaption>{look.title}<br/><span>{look.note}</span></figcaption>
+      </figure>)}
     </div>
-    <p className="lookbook-note">DREAMS · FAITH · YOU — NEW AURAÈ STYLES.</p>
+    <p className="lookbook-note">DREAMS · FAITH · YOU — AURAÈ COLLECTION 01.</p>
   </section>;
 }
 
