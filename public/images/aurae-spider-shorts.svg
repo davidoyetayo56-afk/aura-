@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+<title id="title">AURAÈ Spider Shorts</title><desc id="desc">A faceless chrome mannequin wearing grey AURAÈ shorts with white drawcords and a large black spider graphic.</desc>
+<defs>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#f1eff1"/><stop offset="1" stop-color="#d7d5d8"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="chrome" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#48474e"/><stop offset=".17" stop-color="#fdfcff"/><stop offset=".34" stop-color="#777680"/><stop offset=".53" stop-color="#faf9ff"/><stop offset=".73" stop-color="#7c7b83"/><stop offset=".91" stop-color="#f8f7fa"/><stop offset="1" stop-color="#48474c"/></linearGradient>
+ <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29282d"/><stop offset=".4" stop-color="#111115"/><stop offset=".75" stop-color="#2e2d32"/><stop offset="1" stop-color="#101014"/></linearGradient>
+ <linearGradient id="shorts" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dedee0"/><stop offset=".32" stop-color="#aaaab0"/><stop offset=".55" stop-color="#ededee"/><stop offset=".79" stop-color="#bfc0c4"/><stop offset="1" stop-color="#f1f0f2"/></linearGradient>
+ <linearGradient id="shoe" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#303035"/><stop offset="1" stop-color="#08090c"/></linearGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="15"/></filter>
+</defs>
+<rect width="720" height="900" fill="url(#wall)"/><ellipse cx="358" cy="282" rx="260" ry="290" fill="url(#halo)"/>
+<ellipse cx="357" cy="836" rx="180" ry="19" fill="#242329" opacity=".27" filter="url(#shadow)"/>
+<!-- reflective mannequin head and neck -->
+<path d="M323 211 L322 244 Q360 263 399 243 L397 207Z" fill="url(#chrome)"/>
+<path d="M300 112 Q300 67 360 58 Q420 65 420 112 L410 171 Q397 202 360 207 Q324 200 310 171Z" fill="url(#chrome)" stroke="#8c8992" stroke-width="2"/>
+<path d="M315 94 Q348 69 390 80" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="8" stroke-linecap="round"/>
+<path d="M312 152 Q333 178 366 174" fill="none" stroke="#292830" stroke-opacity=".7" stroke-width="5"/>
+<path d="M396 100 Q414 136 394 169" fill="none" stroke="#fff" stroke-opacity=".68" stroke-width="5"/>
+<!-- oversized black tee -->
+<path d="M313 243 L275 254 L230 287 L266 355 L292 340 L288 443 Q359 465 432 443 L428 340 L455 355 L490 286 L446 254 L404 241 Q360 278 313 243Z" fill="url(#shirt)" stroke="#5a585f" stroke-width="2"/>
+<path d="M315 246 Q359 283 403 246" fill="none" stroke="#77747b" stroke-width="4"/>
+<path d="M296 287 Q309 350 300 428 M423 289 Q411 355 420 428" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="3"/>
+<!-- silver arms and articulated hands -->
+<path d="M245 292 Q224 322 236 362 L265 432 Q278 449 291 435 L284 420 L260 351 L271 315Z" fill="url(#chrome)" stroke="#88858e" stroke-width="2"/>
+<path d="M475 292 Q496 325 484 363 L456 432 Q443 449 430 435 L437 420 L460 351 L449 315Z" fill="url(#chrome)" stroke="#88858e" stroke-width="2"/>
+<path d="M260 423 Q270 411 283 425 L292 451 Q294 464 282 467 Q268 462 262 448Z" fill="url(#chrome)"/>
+<path d="M461 423 Q449 411 437 425 L428 451 Q426 464 438 467 Q452 462 458 448Z" fill="url(#chrome)"/>
+<!-- shorts, elastic waistband -->
+<path d="M282 438 Q359 449 438 438 L452 474 L442 486 Q360 503 278 486 L268 474Z" fill="#c5c4c9" stroke="#797880" stroke-width="2"/>
+<path d="M281 442 Q359 455 438 442" fill="none" stroke="#f8f7f9" stroke-width="5" stroke-linecap="round"/>
+<text x="359" y="470" fill="#17171b" font-family="Georgia,serif" font-size="20" font-weight="bold" letter-spacing="2" text-anchor="middle">AURAÈ</text>
+<path d="M343 469 L337 513 L334 537" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+<path d="M376 469 L380 506 L386 531" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+<path d="M337 516 L333 534 M380 506 L386 529" fill="none" stroke="#77767d" stroke-width="2"/>
+<!-- shorts legs and stitched panels -->
+<path d="M278 486 Q321 496 359 492 L356 634 Q323 645 293 627 L268 508Z" fill="url(#shorts)" stroke="#9f9ea4" stroke-width="2"/>
+<path d="M359 492 Q402 496 442 486 L452 508 L425 627 Q394 645 362 634Z" fill="url(#shorts)" stroke="#9f9ea4" stroke-width="2"/>
+<path d="M359 495 L359 632" stroke="#7c7b82" stroke-width="2"/>
+<path d="M281 503 L300 615 M439 502 L418 616" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+<path d="M290 625 Q323 643 355 630 M365 630 Q394 642 426 625" fill="none" stroke="#87868d" stroke-width="3"/>
+<!-- spider motif -->
+<g transform="translate(319 558)" fill="#101014" stroke="#101014" stroke-linecap="round" stroke-linejoin="round">
+ <ellipse cx="0" cy="0" rx="14" ry="23"/>
+ <path d="M-9 -12 L-39 -41 L-50 -75 L-57 -81 M8 -12 L39 -43 L49 -74 L57 -82 M-12 -3 L-43 -14 L-64 -4 L-71 16 M12 -3 L44 -16 L64 -3 L71 17 M-12 8 L-39 25 L-51 52 L-61 58 M12 8 L41 26 L52 51 L61 59 M-7 16 L-20 41 L-18 65 M7 16 L20 41 L18 65" fill="none" stroke-width="7"/>
+ <path d="M-5 21 L-4 29 M5 21 L4 29" stroke-width="3"/>
+ <circle cx="-4" cy="-21" r="2" fill="#aaa8af" stroke="none"/><circle cx="4" cy="-21" r="2" fill="#aaa8af" stroke="none"/>
+</g>
+<text x="401" y="588" fill="#18181c" font-family="Georgia,serif" font-style="italic" font-size="19" letter-spacing=".5" transform="rotate(-8 401 588)">AURAÈ</text>
+<!-- lower legs, metal ankles and dark sneakers -->
+<path d="M294 628 L350 631 L347 763 L320 799 L294 788 L299 737Z" fill="url(#chrome)" stroke="#85838b" stroke-width="2"/>
+<path d="M369 631 L425 628 L420 737 L425 788 L398 800 L373 762Z" fill="url(#chrome)" stroke="#85838b" stroke-width="2"/>
+<path d="M295 779 Q323 796 349 780 L361 813 Q356 831 322 834 L274 830 Q263 821 276 805Z" fill="url(#shoe)" stroke="#55545b" stroke-width="2"/>
+<path d="M371 780 Q397 796 422 779 L445 806 Q455 824 436 831 L390 834 Q363 832 361 815Z" fill="url(#shoe)" stroke="#55545b" stroke-width="2"/>
+<path d="M273 828 Q319 840 359 827 M369 828 Q410 840 446 827" fill="none" stroke="#fafafa" stroke-width="5" stroke-linecap="round"/>
+<path d="M299 808 L337 807 M391 808 L427 807" stroke="#dddde1" stroke-width="3"/>
+<text x="360" y="873" fill="#69676e" font-family="Arial,sans-serif" font-size="11" letter-spacing="4" text-anchor="middle">AURAÈ · COLLECTION 01</text>
+</svg>
