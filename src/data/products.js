@@ -1,4 +1,3 @@
-const img = (n) => `${import.meta.env.BASE_URL}images/${n}`;
 const glb = (n) => `${import.meta.env.BASE_URL}models/${n}`;
 
 // The three current AURAÈ drop styles. Prices remain unlisted until confirmed.
@@ -14,7 +13,6 @@ export const products = [
     description: "Heather-grey shorts with white drawcords, the black spider graphic and AURAÈ signature branding.",
     sizes: ["S", "M", "L", "XL"],
     model: glb("aurae-spider-shorts.glb"),
-    thumbnail: img("aurae-spider-shorts.svg"),
     color: "#bfc0c4",
     available: true
   },
@@ -28,7 +26,6 @@ export const products = [
     description: "Red short-sleeve button-up with the black thorn illustration, AURAÈ front wordmark and signature back crest.",
     sizes: ["S", "M", "L", "XL", "XXL"],
     model: glb("aurae-thorn-shirt.glb"),
-    thumbnail: img("aurae-thorn-shirt.svg"),
     color: "#d5241c",
     available: true
   },
@@ -42,7 +39,6 @@ export const products = [
     description: "Oversized black tee with a red AURAÈ front mark and bold Money Maker artwork on the back.",
     sizes: ["S", "M", "L", "XL", "XXL"],
     model: glb("aurae-money-maker-tee.glb"),
-    thumbnail: img("aurae-money-maker-tee.svg"),
     color: "#0d0d10",
     available: true
   }
