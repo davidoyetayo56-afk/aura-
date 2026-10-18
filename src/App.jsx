@@ -143,10 +143,10 @@ function AppShell() {
 
 function HomePage({ onOpenBag }) {
   const tiles = [
-    { n: "01", title: "SHOP", note: "NEW ARRIVALS", image: "hoodie.jpg", href: "#/shop" },
-    { n: "02", title: "COLLECTIONS", note: "FIND YOUR PIECE", image: "jersey.jpg", href: "#/collections" },
-    { n: "03", title: "LOOKBOOK", note: "THE AURAÈ WORLD", image: "longsleeve.jpg", href: "#/lookbook" },
-    { n: "04", title: "OUR STORY", note: "DREAMS · FAITH · YOU", image: "tee.jpg", href: "#/about" }
+    { n: "01", title: "SHOP", note: "THE NEW DROP", image: "aurae-money-maker-tee.webp", href: "#/shop" },
+    { n: "02", title: "COLLECTIONS", note: "THREE SIGNATURE STYLES", image: "aurae-thorn-shirt.webp", href: "#/collections" },
+    { n: "03", title: "LOOKBOOK", note: "MEET THE NEW MODELS", image: "aurae-spider-shorts.webp", href: "#/lookbook" },
+    { n: "04", title: "OUR STORY", note: "DREAMS · FAITH · YOU", image: "aurae-campaign.svg", href: "#/about" }
   ];
   return <section className="home-hero home-premium-layout" aria-labelledby="campaign-title">
     <img className="home-premium-art" src={asset("aurae-campaign.svg")} alt="" fetchPriority="high" decoding="async" />
@@ -206,12 +206,9 @@ function CollectionsPage({ addToBag }) {
   const [quickAddProduct, setQuickAddProduct] = useState(null);
   const [quickSize, setQuickSize] = useState("");
   const collections = [
-    { id: "longsleeve", name: "LET BE GOOD", desc: "A soft canvas for a strong message." },
-    { id: "faith-hoodie", name: "DREAMS · FAITH · YOU", desc: "Statement graphics, grounded in faith." },
-    { id: "jersey-23", name: "SAME DREAMS. BIGGER PLANS.", desc: "The black-and-white signature jersey." },
-    { id: "cargo-pants", name: "BUILT FOR THE PLAN", desc: "Utility shapes for everyday movement." },
-    { id: "aurae-cap", name: "THE SIGNATURE", desc: "Small details. Clear intention." },
-    { id: "aurae-beanie", name: "EVERYDAY ESSENTIALS", desc: "A simple mark, worn your way." }
+    { id: "spider-shorts", name: "SPIDER SHORTS", desc: "Light grey shorts with statement spider artwork." },
+    { id: "thorn-shirt", name: "THORN SHIRT", desc: "Red button-up. Black graphic. All AURAÈ." },
+    { id: "money-maker-tee", name: "MONEY MAKER TEE", desc: "Oversized black tee with the red back print." }
   ];
   return <section className="catalog">
     <p className="eyebrow">CURATED BY AURAÈ</p><h1>FIND YOUR <i>WORLD.</i></h1>
@@ -283,11 +280,12 @@ function LookbookPage() {
   return <section className="catalog">
     <p className="eyebrow">AURAÈ / VISUAL DIARY</p><h1>BEYOND THE <i>SURFACE.</i></h1>
     <p className="intro">A study in intention, expression and becoming. The pieces, seen up close.</p>
-    <div className="lookbook-grid">
-      <figure><img src={asset("lookbook-1.png")} alt="AURAÈ editorial campaign look one" loading="lazy" decoding="async"/><figcaption>01 / THE VISION</figcaption></figure>
-      <figure><img src={asset("lookbook-2.png")} alt="AURAÈ editorial campaign look two" loading="lazy" decoding="async"/><figcaption>02 / THE BECOMING</figcaption></figure>
+    <div className="lookbook-grid lookbook-new-drop">
+      <figure><img src={asset("aurae-spider-shorts.webp")} alt="Chrome mannequin wearing the AURAÈ Spider Shorts" loading="lazy" decoding="async"/><figcaption>01 / SPIDER SHORTS</figcaption></figure>
+      <figure><img src={asset("aurae-thorn-shirt.webp")} alt="Chrome mannequins modelling the AURAÈ Thorn Shirt front and back" loading="lazy" decoding="async"/><figcaption>02 / THORN SHIRT</figcaption></figure>
+      <figure><img src={asset("aurae-money-maker-tee.webp")} alt="Chrome mannequins wearing the AURAÈ Money Maker Tee front and back" loading="lazy" decoding="async"/><figcaption>03 / MONEY MAKER</figcaption></figure>
     </div>
-    <p className="lookbook-note">DREAMS · FAITH · YOU — COLLECTION 01.</p>
+    <p className="lookbook-note">DREAMS · FAITH · YOU — NEW AURAÈ STYLES.</p>
   </section>;
 }
 
