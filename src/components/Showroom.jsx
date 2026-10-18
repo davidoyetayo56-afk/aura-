@@ -26,7 +26,7 @@ export default function Showroom() {
       <div className="chips">{cats.map((c) => <button key={c} className={c === cat ? "on" : ""} onClick={() => setCat(c)}>{c.toUpperCase()}</button>)}</div>
       <div className="list">{products.filter((p) => cat === "All" || p.category === cat).map((p) => (
         <button key={p.id} className={"item" + (outfit[p.slot] === p.id ? " on" : "")} onClick={() => pick(p)}>
-          <img src={p.thumbnail} alt="" /><span><small>{p.category.toUpperCase()}</small>{p.name}</span></button>))}</div>
+          <span className="showroom-item-mark" aria-hidden="true">AURAÈ</span><span><small>{p.category.toUpperCase()}</small>{p.name}</span></button>))}</div>
       <small className="dim preset-label">STYLE PRESETS</small>
       <div className="chips">{presets.map((p) => <button key={p.name} onClick={() => setOutfit(p.outfit)}>{p.name}</button>)}</div>
     </aside>
