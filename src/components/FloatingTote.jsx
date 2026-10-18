@@ -76,7 +76,7 @@ export default function FloatingTote({ count, onOpen, buttonRef, flight, notice,
         "--tote-flight-y": `${flight.dy}px`
       }}
     >
-      <img src={flight.image} alt="" />
+      <span className="tote-flight-mark">AURAÈ</span>
     </div>}
 
     {notice && <div className="tote-added-toast" role="status">
