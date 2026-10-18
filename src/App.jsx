@@ -5,7 +5,6 @@ import FloatingTote from "./components/FloatingTote.jsx";
 import { products } from "./data/products.js";
 import { WHATSAPP_NUMBER } from "./config.js";
 
-const asset = (name) => import.meta.env.BASE_URL + "images/" + name;
 const wa = (message) => "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 const contactUrl = wa("Hello AURAÈ, I'd like to enquire about the collection.");
 const enquiryUrl = (product) => wa("Hello AURAÈ, I'm interested in " + product.name + ". Please confirm the current price, available sizes and delivery details.");
@@ -66,7 +65,6 @@ function AppShell() {
 
     setFlight({
       id: flightId,
-      image: product.thumbnail,
       left,
       top,
       width,
@@ -143,13 +141,13 @@ function AppShell() {
 
 function HomePage({ onOpenBag }) {
   const tiles = [
-    { n: "01", title: "SHOP", note: "THE NEW DROP", image: "aurae-money-maker-tee.svg", href: "#/shop" },
-    { n: "02", title: "COLLECTIONS", note: "THREE SIGNATURE STYLES", image: "aurae-thorn-shirt.svg", href: "#/collections" },
-    { n: "03", title: "LOOKBOOK", note: "MEET THE NEW MODELS", image: "aurae-spider-shorts.svg", href: "#/lookbook" },
-    { n: "04", title: "OUR STORY", note: "DREAMS · FAITH · YOU", image: "aurae-campaign.svg", href: "#/about" }
+    { n: "01", title: "SHOP", note: "THE NEW DROP", href: "#/shop" },
+    { n: "02", title: "COLLECTIONS", note: "THREE SIGNATURE STYLES", href: "#/collections" },
+    { n: "03", title: "LOOKBOOK", note: "MEET THE NEW MODELS", href: "#/lookbook" },
+    { n: "04", title: "OUR STORY", note: "DREAMS · FAITH · YOU", href: "#/about" }
   ];
   return <section className="home-hero home-premium-layout" aria-labelledby="campaign-title">
-    <img className="home-premium-art" src={asset("aurae-campaign.svg")} alt="" fetchPriority="high" decoding="async" />
+    <div className="home-premium-art-placeholder" aria-hidden="true" />
     <div className="home-premium-shade" aria-hidden="true" />
     <div className="home-premium-kicker">DREAMS. FAITH. YOU.</div>
     <div className="home-premium-copy">
@@ -160,7 +158,7 @@ function HomePage({ onOpenBag }) {
     </div>
     <nav className="home-premium-tiles" aria-label="Explore AURAÈ">
       {tiles.map((tile) => <a className="home-premium-tile" href={tile.href} key={tile.n}>
-        <img src={asset(tile.image)} alt="" loading="lazy" decoding="async" />
+        <span className="home-premium-tile-art" aria-hidden="true"><i /><b>{tile.n}</b></span>
         <span className="home-premium-tile-shade" aria-hidden="true" />
         <span className="home-premium-tile-number">{tile.n}</span>
         <span className="home-premium-tile-copy"><strong>{tile.title}</strong><small>{tile.note}</small></span>
@@ -188,7 +186,7 @@ function ProductGrid({ items, addToBag }) {
   return <div className="product-grid">{items.map((product, index) =>
     <article className="product-card" key={product.id}>
       <a className="product-photo" href={"#/product/" + product.id} aria-label={"View " + product.name}>
-        <img src={product.thumbnail} alt={product.name} loading={index < 2 ? "eager" : "lazy"} decoding="async"/>
+        <div className="product-art-placeholder" aria-hidden="true"><span>{String(index + 1).padStart(2,"0")}</span><i /></div>
         <span className="photo-index">{String(index + 1).padStart(2,"0")}</span>
         <span className="view-piece">VIEW PIECE ↗</span>
       </a>
@@ -219,7 +217,7 @@ function CollectionsPage({ addToBag }) {
       if (!product) return null;
       return <article className="collection-card" key={collection.id}>
         <a className="collection-main" href={"#/product/" + collection.id} aria-label={"View " + product.name}>
-          <div className="collection-image"><img src={product.thumbnail} alt={product.name} loading="lazy" decoding="async"/><span>VIEW PIECE ↗</span></div>
+          <div className="collection-image collection-image-empty" aria-hidden="true"><div className="collection-art-mark">AURAÈ</div><span>VIEW PIECE ↗</span></div>
           <span className="collection-desc">{collection.desc}</span><h2>{collection.name}</h2>
         </a>
         <div className="collection-card-actions">
@@ -254,7 +252,7 @@ function CollectionsPage({ addToBag }) {
 function ProductPage({ product, addToBag }) {
   const [size, setSize] = useState(product.sizes[0] || "One size");
   return <section className="product-page">
-    <div className="product-image"><img src={product.thumbnail} alt={product.name + " design reference, including the visible front and back"} fetchPriority="high" decoding="async"/></div>
+    <div className="product-image product-image-empty" aria-label={"Visual preview for " + product.name}><span>AURAÈ</span><small>PRODUCT VISUALS REMOVED</small></div>
     <div className="product-info">
       <p className="eyebrow">{product.category.toUpperCase()} / AURAÈ</p>
       <h1>{product.name}</h1>
@@ -275,17 +273,17 @@ function ProductPage({ product, addToBag }) {
 
 function LookbookPage() {
   const looks = [
-    { image: "aurae-spider-shorts.svg", title: "01 / THE SPIDER SHORTS", note: "Grey fleece · Black spider artwork" },
-    { image: "aurae-thorn-shirt.svg", title: "02 / THE THORN SHIRT", note: "Red cotton · Signature thorn crest" },
-    { image: "aurae-money-maker-tee.svg", title: "03 / MONEY MAKER", note: "Oversized black · AURAÈ red print" }
+    { id: "spider", title: "01 / THE SPIDER SHORTS", note: "Grey fleece · Black spider artwork" },
+    { id: "thorn", title: "02 / THE THORN SHIRT", note: "Red cotton · Signature thorn crest" },
+    { id: "money", title: "03 / MONEY MAKER", note: "Oversized black · AURAÈ red print" }
   ];
   return <section className="catalog">
     <p className="eyebrow">AURAÈ / VISUAL DIARY</p>
     <h1>COLLECTION <i>01.</i></h1>
     <p className="intro">The new AURAÈ silhouettes, presented front and back.</p>
     <div className="lookbook-grid lookbook-new-drop">
-      {looks.map((look) => <figure key={look.image}>
-        <img src={asset(look.image)} alt={look.title} loading="lazy" decoding="async"/>
+      {looks.map((look, index) => <figure key={look.id}>
+        <div className="lookbook-image-empty" aria-hidden="true"><span>0{index + 1}</span><i /></div>
         <figcaption>{look.title}<br/><span>{look.note}</span></figcaption>
       </figure>)}
     </div>
