@@ -143,9 +143,9 @@ function AppShell() {
 
 function HomePage({ onOpenBag }) {
   const tiles = [
-    { n: "01", title: "SHOP", note: "THE NEW DROP", image: "aurae-money-maker-tee.webp", href: "#/shop" },
-    { n: "02", title: "COLLECTIONS", note: "THREE SIGNATURE STYLES", image: "aurae-thorn-shirt.webp", href: "#/collections" },
-    { n: "03", title: "LOOKBOOK", note: "MEET THE NEW MODELS", image: "aurae-spider-shorts.webp", href: "#/lookbook" },
+    { n: "01", title: "SHOP", note: "THE NEW DROP", image: "aurae-money-maker-tee.svg", href: "#/shop" },
+    { n: "02", title: "COLLECTIONS", note: "THREE SIGNATURE STYLES", image: "aurae-thorn-shirt.svg", href: "#/collections" },
+    { n: "03", title: "LOOKBOOK", note: "MEET THE NEW MODELS", image: "aurae-spider-shorts.svg", href: "#/lookbook" },
     { n: "04", title: "OUR STORY", note: "DREAMS · FAITH · YOU", image: "aurae-campaign.svg", href: "#/about" }
   ];
   return <section className="home-hero home-premium-layout" aria-labelledby="campaign-title">
