@@ -202,3 +202,40 @@
 @media(prefers-reduced-motion:reduce){
   .product-card,.collection-card,.quick-add-sizes .size-option,.qty button:not(.ghost){transition:none}
 }
+
+/* New AURAÈ mannequin drop: portrait-first apparel photography. */
+.product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 18px}
+.product-photo{aspect-ratio: .78 / 1;background:#eceaeb}
+.product-photo img{object-fit:contain;object-position:center}
+.collection-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 16px}
+.collection-image{aspect-ratio:.78 / 1;background:#eeecee}
+.collection-image img{object-fit:contain;object-position:center}
+.product-page{align-items:start}
+.product-image{
+  align-self:start;
+  min-width:0;
+  background:#efedef;
+}
+.product-image img{
+  display:block;
+  width:100%;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:contain;
+}
+.lookbook-new-drop{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lookbook-new-drop figure:nth-child(2){margin-top:0}
+.lookbook-new-drop img{aspect-ratio:.78 / 1;width:100%;height:auto;object-fit:contain;background:#efedef}
+@media(max-width:900px){
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lookbook-new-drop{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}
+ .product-photo{aspect-ratio:.72 / 1}
+ .collection-grid{grid-template-columns:1fr}
+ .collection-image{aspect-ratio:.8 / 1}
+ .product-page .product-image{border-radius:22px}
+ .lookbook-new-drop{grid-template-columns:1fr}
+}
