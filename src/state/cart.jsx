@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { whatsappUrl } from "../utils/whatsapp";
+import { products } from "../data/products.js";
+const currentProductIds = new Set(products.map((product) => product.id));
 const Ctx = createContext(null);
 export const useCart = () => useContext(Ctx);
 export function CartProvider({ children }) {
@@ -8,7 +10,7 @@ export function CartProvider({ children }) {
     try {
       const saved = window.localStorage.getItem("aurae-shopping-bag");
       const parsed = saved ? JSON.parse(saved) : [];
-      return Array.isArray(parsed) ? parsed.filter((item) => item && item.key && item.product && Number.isFinite(item.qty) && item.qty > 0) : [];
+      return Array.isArray(parsed) ? parsed.filter((item) => item && item.key && item.product && currentProductIds.has(item.product.id) && Number.isFinite(item.qty) && item.qty > 0).map((item) => ({ ...item, product: products.find((product) => product.id === item.product.id) })) : [];
     } catch {
       return [];
     }
